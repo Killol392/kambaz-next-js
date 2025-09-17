@@ -7,11 +7,6 @@ export default function Modules() {
         <button id="wd-view-progress">View Progress</button>
         <select id="wd-publish-dropdown" defaultValue="publish-all">
           <option value="publish-all">Publish All</option>
-          <option value="unpublish-all">Unpublish All</option>
-          <option value="publish-all-items">Publish All Modules & Items</option>
-          <option value="unpublish-all-items">
-            Unpublish All Modules & Items
-          </option>
         </select>
         <button id="wd-add-module">+ Module</button>
         <label htmlFor="wd-sort-modules">Sort by:</label>
@@ -96,6 +91,16 @@ export default function Modules() {
               </ul>
             </li>
           </ul>
+        </li>
+        <li className="wd-module">
+          <div className="wd-title">
+            Week 2, Lecture 1 - Introduction to CSS
+          </div>
+        </li>
+        <li className="wd-module">
+          <div className="wd-title">
+            Week 2, Lecture 2 - Intermediate CSS
+          </div>
         </li>
       </ul>
     </div>
