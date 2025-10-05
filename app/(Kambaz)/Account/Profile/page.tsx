@@ -1,69 +1,71 @@
+"use client";
+
 import Link from "next/link";
+import { Container, FormControl, FormSelect } from "react-bootstrap";
+
 export default function Profile() {
   return (
-    <div id="wd-profile-screen">
-      <h3>Profile</h3>
+    <Container id="wd-profile-screen" style={{ width: "270px" }}>
+      <h1>Profile</h1>
 
-      <div>
-      <label htmlFor="wd-username">Username: </label>
-      <input
+      <FormControl
+        id="wd-username"
         defaultValue="alice"
         placeholder="username"
-        className="wd-username"
+        className="mb-2"
       />
-      </div>
-      <br />
 
-      <div>
-      <label htmlFor="wd-password">Password: </label>
-      <input
+      <FormControl
+        id="wd-password"
         defaultValue="123"
         placeholder="password"
         type="password"
-        className="wd-password"
+        className="mb-2"
       />
-      </div>
-      <br />
-      
-      <div>
-      <label htmlFor="wd-first-name">First Name: </label>
-      <input defaultValue="Alice" placeholder="First Name" id="wd-firstname" />
-      </div>
-      <br />
 
-      <div>
-      <label htmlFor="wd-last-name">Last Name: </label>
-      <input
+      <FormControl
+        id="wd-firstname"
+        defaultValue="Alice"
+        placeholder="First Name"
+        className="mb-2"
+      />
+
+      <FormControl
+        id="wd-lastname"
         defaultValue="Wonderland"
         placeholder="Last Name"
-        id="wd-lastname"
+        className="mb-2"
       />
-      </div>
-      <br />
 
-      <div>
-        <label htmlFor="wd-dob">Date of Birth: </label>
-      <input defaultValue="2000-01-01" type="date" id="wd-dob" />
-      </div>
-      <br />
+      <FormControl
+        id="wd-dob"
+        type="date"
+        defaultValue="2000-01-01"
+        className="mb-2"
+      />
 
-      <div>
-      <label htmlFor="wd-email">Email: </label>
-      <input defaultValue="alice@wonderland" type="email" id="wd-email" />
-      </div>
-      <br />
-      
-      <div>
-        <label htmlFor="wd-role">Role: </label>
-      <select defaultValue="FACULTY" id="wd-role">
-        <option value="USER">User</option> <option value="ADMIN">Admin</option>
-        <option value="FACULTY">Faculty</option>{" "}
+      <FormControl
+        id="wd-email"
+        type="email"
+        defaultValue="alice@wonderland.com"
+        placeholder="Email"
+        className="mb-2"
+      />
+
+      <FormSelect defaultValue="USER" id="wd-role" className="mb-3">
+        <option value="USER">User</option>
+        <option value="ADMIN">Admin</option>
+        <option value="FACULTY">Faculty</option>
         <option value="STUDENT">Student</option>
-      </select>
-      </div>
-      <br />
-      
-      <Link href="Signin"> Sign out </Link>
-    </div>
+      </FormSelect>
+
+      <Link
+        id="wd-signout-btn"
+        href="/Account/Signin"
+        className="btn btn-danger w-100"
+      >
+        Signout
+      </Link>
+    </Container>
   );
 }

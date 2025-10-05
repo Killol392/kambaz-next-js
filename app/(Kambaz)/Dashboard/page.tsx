@@ -1,141 +1,278 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardImg,
+  CardText,
+  CardTitle,
+  Col,
+  Container,
+  Row,
+} from "react-bootstrap";
+
 export default function Dashboard() {
   return (
-    <div id="wd-dashboard">
-      <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
-      <h2 id="wd-dashboard-published">Published Courses (10)</h2> <hr />
+    <Container id="wd-dashboard">
+      <h1 id="wd-dashboard-title">Dashboard</h1>
+      <hr />
+      <h1 id="wd-dashboard-published">Published Courses (10)</h1>
+      <hr />
+
       <div id="wd-dashboard-courses">
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/1234" className="wd-dashboard-course-link">
-            <Image src="/images/reactjs.jpg" width={200} height={150} alt="React JS course image"/>
-            <div>
-              <h5> CS1234 React JS </h5>
-              <p className="wd-dashboard-course-title">
-                Full Stack software developer
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+        <Row xs={1} md={5} className="g-4">
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/1234/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS1234 React JS
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Full Stack software developer
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/4567" className="wd-dashboard-course-link">
-            <Image src="/images/cs5800.jpg" width={200} height={150} alt="Algorithms course image"/>
-            <div>
-              <h5>CS5800 Algorithms</h5>
-              <p className="wd-dashboard-course-title">
-                Design and analysis of algorithms
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/4567/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs5800.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS5800 Algorithms
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Design and analysis of algorithms
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/7890" className="wd-dashboard-course-link">
-            <Image src="/images/cs5400.jpg" width={200} height={150} alt="Principles of Programming Languages course image"/>
-            <div>
-              <h5>CS5400 Principles of Programming Languages</h5>
-              <p className="wd-dashboard-course-title">
-                Study of programming language design & semantics
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/7890/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs5400.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS5400 Principles of Programming Languages
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Study of programming language design & semantics
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/0123" className="wd-dashboard-course-link">
-            <Image src="/images/cs5500.jpg" width={200} height={150} alt="Foundations of Software Engineering course image"/>
-            <div>
-              <h5>CS5500 Foundations of Software Engineering</h5>
-              <p className="wd-dashboard-course-title">
-                Principles and practices of software engineering
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/0123/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs5500.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS5500 Foundations of Software Engineering
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Principles and practices of software engineering
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/3456" className="wd-dashboard-course-link">
-            <Image src="/images/cs5520.jpg" width={200} height={150} alt="Mobile Application Development course image"/>
-            <div>
-              <h5>CS5520 Mobile Application Development</h5>
-              <p className="wd-dashboard-course-title">
-                Building mobile apps with modern frameworks
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/3456/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs5520.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS5520 Mobile Application Development
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Building mobile apps with modern frameworks
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/6789" className="wd-dashboard-course-link">
-            <Image src="/images/cs5600.jpg" width={200} height={150} alt="Computer Systems course image"/>
-            <div>
-              <h5>CS5600 Computer Systems</h5>
-              <p className="wd-dashboard-course-title">
-                Operating systems and systems programming
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/6789/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs5600.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS5600 Computer Systems
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Operating systems and systems programming
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/9012" className="wd-dashboard-course-link">
-            <Image src="/images/cs6120.jpg" width={200} height={150} alt="Natural Language Processing course image"/>
-            <div>
-              <h5>CS6120 Natural Language Processing</h5>
-              <p className="wd-dashboard-course-title">
-                Language models and text processing
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/9012/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs6120.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS6120 Natural Language Processing
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Language models and text processing
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/2345" className="wd-dashboard-course-link">
-            <Image src="/images/cs6140.jpg" width={200} height={150} alt="Machine Learning course image"/>
-            <div>
-              <h5>CS6140 Machine Learning</h5>
-              <p className="wd-dashboard-course-title">
-                Supervised, unsupervised, and deep learning
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/2345/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs6140.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS6140 Machine Learning
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Supervised, unsupervised, and deep learning
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/5678" className="wd-dashboard-course-link">
-            <Image src="/images/cs6200.jpg" width={200} height={150} alt="Information Retrieval course image"/>
-            <div>
-              <h5>CS6200 Information Retrieval</h5>
-              <p className="wd-dashboard-course-title">
-                Search engines and retrieval models
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/5678/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs6200.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS6200 Information Retrieval
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Search engines and retrieval models
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
 
-        <div className="wd-dashboard-course">
-          <Link href="/Courses/8901" className="wd-dashboard-course-link">
-            <Image src="/images/cs6760.jpg" width={200} height={150} alt="Privacy, Security, and Usability course image"/>
-            <div>
-              <h5>CS6760 Privacy, Security, and Usability</h5>
-              <p className="wd-dashboard-course-title">
-                Secure and user-centered system design
-              </p>
-              <button>Go</button>
-            </div>
-          </Link>
-        </div>
+          <Col className="wd-dashboard-course">
+            <Card>
+              <Link
+                href="/Courses/8901/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+              >
+                <CardImg
+                  variant="top"
+                  src="/images/cs6760.jpg"
+                  width="100%"
+                  height={160}
+                />
+                <CardBody>
+                  <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">
+                    CS6760 Privacy, Security, and Usability
+                  </CardTitle>
+                  <CardText className="wd-dashboard-course-description overflow-hidden">
+                    Secure and user-centered system design
+                  </CardText>
+                  <Button variant="primary">Go</Button>
+                </CardBody>
+              </Link>
+            </Card>
+          </Col>
+        </Row>
       </div>
-    </div>
+    </Container>
   );
 }

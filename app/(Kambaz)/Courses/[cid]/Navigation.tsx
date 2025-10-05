@@ -1,39 +1,37 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import "../../styles.css";
+
 export default function CourseNavigation() {
+  const pathname = usePathname();
+
+  const links = [
+    { name: "Home", href: "/Courses/1234/Home" },
+    { name: "Modules", href: "/Courses/1234/Modules" },
+    { name: "Piazza", href: "/Courses/1234/Piazza" },
+    { name: "Zoom", href: "/Courses/1234/Zoom" },
+    { name: "Assignments", href: "/Courses/1234/Assignments" },
+    { name: "Quizzes", href: "/Courses/1234/Quizzes" },
+    { name: "Grades", href: "/Courses/1234/Grades" },
+    { name: "People", href: "/Courses/1234/People/Table" },
+  ];
+
   return (
-    <div id="wd-courses-navigation">
-      <Link href="/Courses/1234/Home" id="wd-course-home-link">
-        Home
-      </Link>
-      <br />
-      <Link href="/Courses/1234/Modules" id="wd-course-modules-link">
-        Modules
-      </Link>
-      <br />
-      <Link href="/Courses/1234/Piazza" id="wd-course-piazza-link">
-        Piazza
-      </Link>
-      <br />
-      <Link href="/Courses/1234/Zoom" id="wd-course-zoom-link">
-        Zoom
-      </Link>
-      <br />
-      <Link href="/Courses/1234/Assignments" id="wd-course-quizzes-link">
-        Assignments
-      </Link>
-      <br />
-      <Link href="/Courses/1234/Quizzes" id="wd-course-assignments-link">
-        Quizzes
-      </Link>
-      <br />
-      <Link href="/Courses/1234/Grades" id="wd-course-grades-link">
-        Grades
-      </Link>
-      <br />
-      <Link href="/Courses/1234/People" id="wd-course-people-link">
-        People
-      </Link>
-      <br />
+    <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
+      {links.map((link, index) => (
+        <Link
+          key={index}
+          href={link.href}
+          id={`wd-course-${link.name.toLowerCase()}-link`}
+          className={`list-group-item border-0 ${
+            pathname.includes(link.name) ? "active" : "text-danger"
+          }`}
+        >
+          {link.name}
+        </Link>
+      ))}
     </div>
   );
 }
