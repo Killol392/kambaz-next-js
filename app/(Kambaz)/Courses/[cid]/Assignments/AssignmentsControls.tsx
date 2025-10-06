@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, FormControl, InputGroup } from "react-bootstrap";
+import { Button, FormControl } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
 import { IoSearchOutline } from "react-icons/io5";
 export default function AssignmentsControls() {

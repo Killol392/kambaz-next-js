@@ -4,16 +4,12 @@ import Link from "next/link";
 import {
   Container,
   ListGroup,
-  Badge,
-  Button,
-  InputGroup,
-  FormControl,
+  Badge
 } from "react-bootstrap";
 import { BsGripVertical } from "react-icons/bs";
 import { MdAssignment } from "react-icons/md";
 import AssignmentsControls from "./AssignmentsControls";
 import AssignmentControlButtons from "./AssignmentsControlButtons";
-import IndvAssignmentControlButtons from "./SoloAssignmentsControlButtons";
 import SoloAssignmentsControlButtons from "./SoloAssignmentsControlButtons";
 
 export default function Assignments() {
