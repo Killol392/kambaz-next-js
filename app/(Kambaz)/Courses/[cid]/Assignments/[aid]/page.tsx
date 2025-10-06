@@ -99,7 +99,6 @@ The Kanbas application should include a link to navigate back to the landing pag
                 id="wd-website-url"
                 label="Website URL"
                 className="m-2"
-                defaultChecked
               />
               <FormCheck
                 type="checkbox"
