@@ -1,0 +1,314 @@
+[
+  {
+    "_id": "A901",
+    "title": "Rocket Propulsion Fundamentals Assignment",
+    "course": "RS101",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M101"
+    ],
+    "description": "This assignment focuses on rocket propulsion fundamentals concepts as applied in RS101."
+  },
+  {
+    "_id": "A902",
+    "title": "Combustion Chamber Dynamics Assignment",
+    "course": "RS101",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M102"
+    ],
+    "description": "This assignment focuses on combustion chamber dynamics concepts as applied in RS101."
+  },
+  {
+    "_id": "A903",
+    "title": "Thrust Vector Control Analysis Quiz",
+    "course": "RS101",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M103"
+    ],
+    "description": "This assignment focuses on thrust vector control analysis concepts as applied in RS101."
+  },
+  {
+    "_id": "A904",
+    "title": "Airfoil Design and Analysis Assignment",
+    "course": "RS102",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M201"
+    ],
+    "description": "This assignment focuses on airfoil design and analysis concepts as applied in RS102."
+  },
+  {
+    "_id": "A905",
+    "title": "Supersonic Flow Investigation Assignment",
+    "course": "RS102",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M202"
+    ],
+    "description": "This assignment focuses on supersonic flow investigation concepts as applied in RS102."
+  },
+  {
+    "_id": "A906",
+    "title": "Re-entry Heat Shield Testing Quiz",
+    "course": "RS102",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M203"
+    ],
+    "description": "This assignment focuses on re-entry heat shield testing concepts as applied in RS102."
+  },
+  {
+    "_id": "A907",
+    "title": "Spacecraft Structural Design Assignment",
+    "course": "RS103",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M301"
+    ],
+    "description": "This assignment focuses on spacecraft structural design concepts as applied in RS103."
+  },
+  {
+    "_id": "A908",
+    "title": "Orbital Mechanics Simulation Assignment",
+    "course": "RS103",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M302"
+    ],
+    "description": "This assignment focuses on orbital mechanics simulation concepts as applied in RS103."
+  },
+  {
+    "_id": "A909",
+    "title": "Launch Vehicle Systems Engineering Assignment",
+    "course": "RS103",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M303"
+    ],
+    "description": "This assignment focuses on launch vehicle systems engineering concepts as applied in RS103."
+  },
+  {
+    "_id": "A910",
+    "title": "Aromatic Compounds Synthesis Assignment",
+    "course": "RS104",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M401"
+    ],
+    "description": "This assignment focuses on aromatic compounds synthesis concepts as applied in RS104."
+  },
+  {
+    "_id": "A911",
+    "title": "Organic Spectroscopy Application",
+    "course": "RS104",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M402"
+    ],
+    "description": "This assignment focuses on organic spectroscopy application concepts as applied in RS104."
+  },
+  {
+    "_id": "A912",
+    "title": "Functional Group Mechanism Quiz",
+    "course": "RS104",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M403"
+    ],
+    "description": "This assignment focuses on functional group mechanism quiz concepts as applied in RS104."
+  },
+  {
+    "_id": "A913",
+    "title": "Inorganic Complex Reactions Assignment",
+    "course": "RS105",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M501"
+    ],
+    "description": "This assignment focuses on inorganic complex reactions concepts as applied in RS105."
+  },
+  {
+    "_id": "A914",
+    "title": "Periodic Trends & Bonding Quiz",
+    "course": "RS105",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M502"
+    ],
+    "description": "This assignment focuses on periodic trends & bonding quiz concepts as applied in RS105."
+  },
+  {
+    "_id": "A915",
+    "title": "Transition Metal Lab Analysis",
+    "course": "RS105",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M503"
+    ],
+    "description": "This assignment focuses on transition metal lab analysis concepts as applied in RS105."
+  },
+  {
+    "_id": "A916",
+    "title": "Planetary Surface Composition Study Assignment",
+    "course": "RS106",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M601"
+    ],
+    "description": "This assignment focuses on planetary surface composition study concepts as applied in RS106."
+  },
+  {
+    "_id": "A917",
+    "title": "Volcanic Activity Modeling Assignment",
+    "course": "RS106",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M602"
+    ],
+    "description": "This assignment focuses on volcanic activity modeling concepts as applied in RS106."
+  },
+  {
+    "_id": "A918",
+    "title": "Atmospheric Layer Simulation",
+    "course": "RS106",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M603"
+    ],
+    "description": "This assignment focuses on atmospheric layer simulation concepts as applied in RS106."
+  },
+  {
+    "_id": "A919",
+    "title": "Space Law and Sovereignty Case Study",
+    "course": "RS107",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M701"
+    ],
+    "description": "This assignment focuses on space law and sovereignty case study concepts as applied in RS107."
+  },
+  {
+    "_id": "A920",
+    "title": "Analysis of Outer Space Treaty",
+    "course": "RS107",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M702"
+    ],
+    "description": "This assignment focuses on analysis of outer space treaty concepts as applied in RS107."
+  },
+  {
+    "_id": "A921",
+    "title": "Commercial Launch Licensing Review",
+    "course": "RS107",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M703"
+    ],
+    "description": "This assignment focuses on commercial launch licensing review concepts as applied in RS107."
+  },
+  {
+    "_id": "A922",
+    "title": "Mars Rover Path Planning Assignment",
+    "course": "RS108",
+    "availableDate": "2025-10-06",
+    "dueDate": "2025-10-21",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M801"
+    ],
+    "description": "This assignment focuses on mars rover path planning concepts as applied in RS108."
+  },
+  {
+    "_id": "A923",
+    "title": "AI-based Robotic Control Systems Assignment",
+    "course": "RS108",
+    "availableDate": "2025-10-07",
+    "dueDate": "2025-10-22",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M802"
+    ],
+    "description": "This assignment focuses on ai-based robotic control systems concepts as applied in RS108."
+  },
+  {
+    "_id": "A924",
+    "title": "Autonomous Navigation Challenge Assignment",
+    "course": "RS108",
+    "availableDate": "2025-10-08",
+    "dueDate": "2025-10-23",
+    "availableUntil": "2025-10-25",
+    "points": 100,
+    "modules": [
+      "M803"
+    ],
+    "description": "This assignment focuses on autonomous navigation challenge concepts as applied in RS108."
+  }
+]

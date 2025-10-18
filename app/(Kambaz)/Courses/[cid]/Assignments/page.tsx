@@ -11,20 +11,33 @@ import { MdAssignment } from "react-icons/md";
 import AssignmentsControls from "./AssignmentsControls";
 import AssignmentControlButtons from "./AssignmentsControlButtons";
 import SoloAssignmentsControlButtons from "./SoloAssignmentsControlButtons";
+import { useParams } from "next/navigation";
+
+import { assignments } from "../../../Database";
+
+const formatDateToMonthDayYear = (dateString: string) => {
+  const date = new Date(dateString); // Create a Date object from your date string
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
 
 export default function Assignments() {
+  const { cid, aid } = useParams();
   return (
     <Container id="wd-assignments">
-      <AssignmentsControls></AssignmentsControls>
+      <AssignmentsControls />
       <br />
       <br />
       <br />
       <br />
-      <ListGroup className="rounded-0" id="wd-assignments-group">
+      <ListGroup className="rounded-0" id="wd-assignments">
         <ListGroup.Item className="wd-assignment p-0 mb-5 fs-5 border-gray">
           <div className="wd-title p-3 ps-2 bg-secondary">
             <BsGripVertical className="me-2 fs-3" /> ASSIGNMENTS
-            <AssignmentControlButtons></AssignmentControlButtons>
+            <AssignmentControlButtons />
             <Badge
               bg="light"
               text="dark"
@@ -33,74 +46,42 @@ export default function Assignments() {
               40% of Total
             </Badge>
           </div>
-
           <ListGroup className="wd-assignment-list rounded-0">
-            <ListGroup.Item className="wd-assignment-item p-3 ps-1">
-              <div className="d-flex align-items-center">
-                <BsGripVertical className="me-2 fs-3" />
-                <MdAssignment className="me-2 fs-3" />
-                <div className="flex-grow-1 p-1">
-                  <Link
-                    href="/Courses/1234/Assignments/123"
-                    className="text-decoration-none text-dark w-bold fs-5"
-                  >
-                    A1 - ENV + HTML
-                  </Link>
-                  <div className="mt-1">
-                    <span className="text-danger me-2">Multiple Modules</span>|
-                    Not available until May 6 at 12:00am | Due May 13 at 11:59pm
-                    | 100 pts
+            {assignments
+              .filter((assignment) => assignment.course === cid)
+              .map((assignment) => (
+                <ListGroup.Item
+                  key={assignment._id}
+                  className="wd-assignment-item p-3 ps-1"
+                >
+                  <div className="d-flex align-items-center">
+                    <BsGripVertical className="me-2 fs-3" />
+                    <MdAssignment className="me-2 fs-3" />
+                    <div className="flex-grow-1 p-1">
+                      <Link
+                        href={`/Courses/${cid}/Assignments/${assignment._id}`}
+                        className="text-decoration-none text-dark w-bold fs-5"
+                      >
+                        {assignment.title}
+                      </Link>
+                      <div className="mt-1">
+                        <span className="text-danger me-2">
+                          {assignment.modules
+                            ? assignment.modules.length > 1
+                              ? "Multiple Modules"
+                              : "Single Module"
+                            : "No Module"}
+                        </span>
+                        | Not available until
+                        {formatDateToMonthDayYear(assignment.availableDate)} |
+                        Due
+                        {formatDateToMonthDayYear(assignment.dueDate)} |
+                        {assignment.points} pts
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <SoloAssignmentsControlButtons></SoloAssignmentsControlButtons>
-              </div>
-            </ListGroup.Item>
-          </ListGroup>
-
-          <ListGroup className="wd-assignment-list rounded-0">
-            <ListGroup.Item className="wd-assignment-item p-3 ps-1">
-              <div className="d-flex align-items-center">
-                <BsGripVertical className="me-2 fs-3" />
-                <MdAssignment className="me-2 fs-3" />
-                <div className="flex-grow-1 p-1">
-                  <Link
-                    href="/Courses/1234/Assignments/324"
-                    className="text-decoration-none text-dark w-bold fs-5"
-                  >
-                    A2 - CSS + BOOTSTRAP
-                  </Link>
-                  <div className="mt-1">
-                    <span className="text-danger me-2">Multiple Modules</span>|
-                    Not available until May 13 at 12:00am | Due May 20 at
-                    11:59pm | 100 pts
-                  </div>
-                </div>
-                <SoloAssignmentsControlButtons></SoloAssignmentsControlButtons>
-              </div>
-            </ListGroup.Item>
-          </ListGroup>
-
-          <ListGroup className="wd-assignment-list rounded-0">
-            <ListGroup.Item className="wd-assignment-item p-3 ps-1">
-              <div className="d-flex align-items-center">
-                <BsGripVertical className="me-2 fs-3" />
-                <MdAssignment className="me-2 fs-3" />
-                <div className="flex-grow-1 p-1">
-                  <Link
-                    href="/Courses/1234/Assignments/456"
-                    className="text-decoration-none text-dark w-bold fs-5"
-                  >
-                    A3 - JAVASCRIPT + REACT
-                  </Link>
-                  <div className="mt-1">
-                    <span className="text-danger me-2">Multiple Modules</span>|
-                    Not available until May 20 at 12:00am | Due May 27 at
-                    11:59pm | 100 pts
-                  </div>
-                </div>
-                <SoloAssignmentsControlButtons></SoloAssignmentsControlButtons>
-              </div>
-            </ListGroup.Item>
+                </ListGroup.Item>
+              ))}
           </ListGroup>
         </ListGroup.Item>
       </ListGroup>

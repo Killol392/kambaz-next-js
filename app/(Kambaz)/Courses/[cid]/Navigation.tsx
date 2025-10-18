@@ -5,31 +5,29 @@ import { usePathname } from "next/navigation";
 import "../../styles.css";
 
 export default function CourseNavigation() {
-  const pathname = usePathname();
-
+  const path = usePathname();
+  const cid = path.split("/")[2];
   const links = [
-    { name: "Home", href: "/Courses/1234/Home" },
-    { name: "Modules", href: "/Courses/1234/Modules" },
-    { name: "Piazza", href: "/Courses/1234/Piazza" },
-    { name: "Zoom", href: "/Courses/1234/Zoom" },
-    { name: "Assignments", href: "/Courses/1234/Assignments" },
-    { name: "Quizzes", href: "/Courses/1234/Quizzes" },
-    { name: "Grades", href: "/Courses/1234/Grades" },
-    { name: "People", href: "/Courses/1234/People/Table" },
+    "Home",
+    "Modules",
+    "Piazza",
+    "Zoom",
+    "Assignments",
+    "Quizzes",
+    "Grades",
+    "People",
   ];
-
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
-      {links.map((link, index) => (
+      {links.map((link) => (
         <Link
-          key={index}
-          href={link.href}
-          id={`wd-course-${link.name.toLowerCase()}-link`}
-          className={`list-group-item border-0 ${
-            pathname.includes(link.name) ? "active" : "text-danger"
-          }`}
+          key={link}
+          href={`/Courses/${cid}/${link}`}
+          id={`wd-course-${link.toLowerCase()}-link`}
+          className={`list-group-item border-0
+            ${path.includes(link) ? "active" : "text-danger"}`}
         >
-          {link.name}
+          {link}
         </Link>
       ))}
     </div>

@@ -1,23 +1,28 @@
 "use client";
 
+import { redirect, useParams } from "next/navigation";
 import {
   Button,
   Col,
-  Container,
-  FormCheck,
   FormControl,
   FormLabel,
   FormSelect,
+  FormCheck,
   Row,
+  Container,
 } from "react-bootstrap";
 
+import { assignments } from "../../../../Database";
+
 export default function AssignmentEditor() {
+  const { cid, aid } = useParams();
+  const assignment = assignments.find((a) => a._id === aid);
   return (
     <Container id="wd-assignments-editor">
       <FormLabel htmlFor="wd-name">Assignment Name</FormLabel>
       <FormControl
         id="wd-name"
-        defaultValue="A1 - ENV + HTML"
+        defaultValue={assignment?.title}
         className="mb-3"
       />
 
@@ -26,16 +31,7 @@ export default function AssignmentEditor() {
         id="wd-description"
         rows={10}
         className="mb-3"
-        defaultValue={`The assignment is available online. Submit a link to the landing page of your Web application running on Netlify.
-
-The landing page should include the following:
-
-• Your full name and section
-• Links to each of the lab assignments
-• Link to the Kanbas application
-• Links to all relevant source code repositories
-
-The Kanbas application should include a link to navigate back to the landing page.`}
+        defaultValue={assignment?.description}
       />
 
       <Row className="mb-3">
@@ -43,7 +39,11 @@ The Kanbas application should include a link to navigate back to the landing pag
           Points
         </FormLabel>
         <Col sm={10}>
-          <FormControl id="wd-points" type="number" defaultValue={100} />
+          <FormControl
+            id="wd-points"
+            defaultValue={assignment?.points}
+            type="number"
+          />
         </Col>
       </Row>
 
@@ -52,11 +52,10 @@ The Kanbas application should include a link to navigate back to the landing pag
           Assignment Group
         </FormLabel>
         <Col sm={10}>
-          <FormSelect id="wd-group" defaultValue="ASSIGNMENTS">
-            <option value="ASSIGNMENTS">ASSIGNMENTS</option>
-            <option value="QUIZZES">QUIZZES</option>
-            <option value="EXAMS">EXAMS</option>
-            <option value="PROJECT">PROJECT</option>
+          <FormSelect id="wd-group">
+            <option>ASSIGNMENTS</option>
+            <option>QUIZZES</option>
+            <option>EXAMS</option>
           </FormSelect>
         </Col>
       </Row>
@@ -66,10 +65,9 @@ The Kanbas application should include a link to navigate back to the landing pag
           Display Grade as
         </FormLabel>
         <Col sm={10}>
-          <FormSelect id="wd-display-grade-as" defaultValue="percentage">
-            <option value="percentage">Percentage</option>
-            <option value="points">Points</option>
-            <option value="complete-incomplete">Complete/Incomplete</option>
+          <FormSelect id="wd-display-grade-as">
+            <option>Percentage</option>
+            <option>Points</option>
           </FormSelect>
         </Col>
       </Row>
@@ -81,43 +79,45 @@ The Kanbas application should include a link to navigate back to the landing pag
         <Col sm={10}>
           <div className="border p-3 rounded">
             <FormSelect id="wd-submission-type" className="mb-3">
-              <option value="online">Online</option>
-              <option value="in-person">In-Person</option>
-              <option value="external-tool">External Tool</option>
+              <option>Online</option>
+              <option>In-Person</option>
             </FormSelect>
 
-            <strong>Online Entry Options</strong>
-            <div className="mt-2">
-              <FormCheck
-                type="checkbox"
-                id="wd-text-entry"
-                label="Text Entry"
-                className="m-2"
-              />
-              <FormCheck
-                type="checkbox"
-                id="wd-website-url"
-                label="Website URL"
-                className="m-2"
-              />
-              <FormCheck
-                type="checkbox"
-                id="wd-media-recordings"
-                label="Media Recordings"
-                className="m-2"
-              />
-              <FormCheck
-                type="checkbox"
-                id="wd-student-annotation"
-                label="Student Annotation"
-                className="m-2"
-              />
-              <FormCheck
-                type="checkbox"
-                id="wd-file-upload"
-                label="File Upload"
-                className="m-2"
-              />
+            <div>
+              <strong>Online Entry Options</strong>
+              <div className="mt-2">
+                <FormCheck
+                  type="checkbox"
+                  id="wd-text-entry"
+                  label="Text Entry"
+                  className="m-2"
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-website-url"
+                  label="Website URL"
+                  className="m-2"
+                  defaultChecked
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-media-recordings"
+                  label="Media Recordings"
+                  className="m-2"
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-student-annotation"
+                  label="Student Annotation"
+                  className="m-2"
+                />
+                <FormCheck
+                  type="checkbox"
+                  id="wd-file-upload"
+                  label="File Upload"
+                  className="m-2"
+                />
+              </div>
             </div>
           </div>
         </Col>
@@ -132,22 +132,20 @@ The Kanbas application should include a link to navigate back to the landing pag
             <FormLabel htmlFor="wd-assign-to">
               <strong>Assign to</strong>
             </FormLabel>
-            <FormSelect id="wd-assign-to" className="mb-3">
+            <FormSelect multiple id="wd-assign-to" className="mb-3">
               <option>Everyone</option>
-              <option>Section 1</option>
-              <option>Section 2</option>
-              <option>Section 3</option>
-              <option>Section 4</option>
-              <option>Section 5</option>
+              <option>Group 1</option>
+              <option>Group 2</option>
+              <option>Group 3</option>
             </FormSelect>
 
             <FormLabel htmlFor="wd-due-date">
-              <strong>Due Date</strong>
+              <strong>Due</strong>
             </FormLabel>
             <FormControl
               type="date"
               id="wd-due-date"
-              defaultValue="2023-10-20"
+              defaultValue={assignment?.dueDate}
               className="mb-3"
             />
 
@@ -159,7 +157,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                 <FormControl
                   type="date"
                   id="wd-available-from"
-                  defaultValue="2023-10-01"
+                  defaultValue={assignment?.availableDate}
                 />
               </Col>
               <Col sm={6}>
@@ -169,7 +167,7 @@ The Kanbas application should include a link to navigate back to the landing pag
                 <FormControl
                   type="date"
                   id="wd-available-until"
-                  defaultValue="2023-10-21"
+                  defaultValue={assignment?.availableUntil}
                 />
               </Col>
             </Row>
@@ -180,10 +178,19 @@ The Kanbas application should include a link to navigate back to the landing pag
       <hr />
 
       <div className="text-end">
-        <Button variant="secondary" className="me-2" id="wd-cancel-assignment">
+        <Button
+          variant="secondary"
+          className="me-2"
+          id="wd-cancel-assignment"
+          onClick={() => redirect(`/Courses/${cid}/Assignments`)}
+        >
           Cancel
         </Button>
-        <Button variant="danger" id="wd-save-assignment">
+        <Button
+          variant="danger"
+          id="wd-save-assignment"
+          onClick={() => redirect(`/Courses/${cid}/Assignments/`)}
+        >
           Save
         </Button>
       </div>
