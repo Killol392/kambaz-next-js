@@ -4,13 +4,24 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
-  FormLabel,
-  FormSelect,
 } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
 import { IoBanOutline } from "react-icons/io5";
-export default function ModulesControls() {
+import { useState } from "react";
+import ModuleEditor from "./ModuleEditor";
+export default function ModulesControls({
+  moduleName,
+  setModuleName,
+  addModule,
+}: {
+  moduleName: string;
+  setModuleName: (title: string) => void;
+  addModule: () => void;
+}) {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
     <div id="wd-modules-controls" className="text-nowrap">
       <Button
@@ -18,6 +29,7 @@ export default function ModulesControls() {
         size="lg"
         className="me-1 float-end"
         id="wd-add-module-btn"
+        onClick={handleShow}
       >
         <FaPlus className="position-relative me-2" style={{ bottom: "1px" }} />
         Module
@@ -60,16 +72,14 @@ export default function ModulesControls() {
       >
         Collapse All
       </Button>
-      <div className="d-flex align-items-center">
-        <FormLabel htmlFor="wd-sort-modules" className="me-2 mb-0">
-          Sort by:
-        </FormLabel>
-        <FormSelect id="wd-sort-modules" defaultValue="name" size="lg">
-          <option value="name">Module Name</option>
-          <option value="date">Date</option>
-          <option value="progress">Progress</option>
-        </FormSelect>
-      </div>
+      <ModuleEditor
+        show={show}
+        handleClose={handleClose}
+        dialogTitle="Add Module"
+        moduleName={moduleName}
+        setModuleName={setModuleName}
+        addModule={addModule}
+      />
     </div>
   );
 }

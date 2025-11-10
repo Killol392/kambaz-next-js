@@ -1,20 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import {
-  Container,
-  ListGroup,
-  Badge
-} from "react-bootstrap";
-import { BsGripVertical } from "react-icons/bs";
-import { MdAssignment } from "react-icons/md";
 import AssignmentsControls from "./AssignmentsControls";
+import { Badge, Container, ListGroup } from "react-bootstrap";
+import { BsGripVertical } from "react-icons/bs";
 import AssignmentControlButtons from "./AssignmentsControlButtons";
 import SoloAssignmentsControlButtons from "./SoloAssignmentsControlButtons";
+import { MdAssignment } from "react-icons/md";
 import { useParams } from "next/navigation";
-
-import { assignments } from "../../../Database";
-
+import { useDispatch, useSelector } from "react-redux";
+import { FaTrash } from "react-icons/fa6";
+import { deleteAssignment } from "./reducer";
+import { useState } from "react";
+import AssignmentDeleter from "./AssignmentDeleter";
 const formatDateToMonthDayYear = (dateString: string) => {
   const date = new Date(dateString); // Create a Date object from your date string
   return date.toLocaleDateString("en-US", {
@@ -25,11 +23,24 @@ const formatDateToMonthDayYear = (dateString: string) => {
 };
 
 export default function Assignments() {
-  const { cid, aid } = useParams();
+  const { cid } = useParams();
+  const { assignments } = useSelector(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (state: any) => state.assignmentsReducer
+  );
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [aid, setAid] = useState<string>("");
+
+  const { currentUser } = useSelector(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (state: any) => state.accountReducer
+  );
   return (
     <Container id="wd-assignments">
       <AssignmentsControls />
-      <br />
       <br />
       <br />
       <br />
@@ -48,8 +59,10 @@ export default function Assignments() {
           </div>
           <ListGroup className="wd-assignment-list rounded-0">
             {assignments
-              .filter((assignment) => assignment.course === cid)
-              .map((assignment) => (
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              .filter((assignment: any) => assignment.course === cid)
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              .map((assignment: any) => (
                 <ListGroup.Item
                   key={assignment._id}
                   className="wd-assignment-item p-3 ps-1"
@@ -72,19 +85,45 @@ export default function Assignments() {
                               : "Single Module"
                             : "No Module"}
                         </span>
-                        | Not available until
+                        | Not available until&nbsp;
                         {formatDateToMonthDayYear(assignment.availableDate)} |
-                        Due
+                        Due&nbsp;
                         {formatDateToMonthDayYear(assignment.dueDate)} |
                         {assignment.points} pts
                       </div>
                     </div>
+                    {currentUser.role === "FACULTY" && (
+                      <FaTrash
+                        className="text-danger me-2 float-end"
+                        onClick={() => {
+                          setAid(assignment._id);
+                          handleShow();
+                        }}
+                      />
+                    )}
                   </div>
                 </ListGroup.Item>
               ))}
           </ListGroup>
         </ListGroup.Item>
       </ListGroup>
+      <AssignmentDeleter
+        show={show}
+        handleClose={handleClose}
+        dialogTitle="Delete Assignment"
+        assignmentName={
+          assignments.find(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            (a: any) => a._id === aid
+          )?.title || ""
+        }
+        deleteAssignment={() =>
+          dispatch(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            deleteAssignment(assignments.find((a: any) => a._id === aid))
+          )
+        }
+      />
     </Container>
   );
 }
