@@ -18,21 +18,11 @@ export default function Profile() {
     dispatch(setCurrentUser(updatedProfile));
   };
 
-  // const fetchProfile = () => {
-  //   if (!currentUser) return redirect("/Account/Signin");
-  //   setProfile(currentUser);
-  // };
-  const fetchProfile = async () => {
-    try {
-      const user = await client.profile();
-      dispatch(setCurrentUser(user));
-      setProfile(user);
-    } catch (e) {
-      console.error("Unauthorized. Redirecting to Signin.");
-      redirect("/Account/Signin");
-    }
+  const fetchProfile = () => {
+    if (!currentUser) return redirect("/Account/Signin");
+    setProfile(currentUser);
   };
-  
+
   const signout = async () => {
     await client.signout();
     dispatch(setCurrentUser(null));
