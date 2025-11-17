@@ -1,14 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { enrollments } from "../../Database";
-const initialState = {
-  enrollments: enrollments,
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const initialState: { enrollments: any[] } = {
+  enrollments: [],
 };
 const enrollmentsSlice = createSlice({
   name: "enrollments",
   initialState,
   reducers: {
+    setEnrollments: (state, { payload: enrollments }) => {
+      state.enrollments = enrollments;
+    },
     addEnrollment: (state, { payload: enrollment }) => {
-      state.enrollments.push(enrollment);
+      state.enrollments = [...state.enrollments, enrollment];
     },
     removeEnrollment: (state, { payload: enrollment }) => {
       state.enrollments = state.enrollments.filter(
@@ -17,5 +20,6 @@ const enrollmentsSlice = createSlice({
     },
   },
 });
-export const { addEnrollment, removeEnrollment } = enrollmentsSlice.actions;
+export const { setEnrollments, addEnrollment, removeEnrollment } =
+  enrollmentsSlice.actions;
 export default enrollmentsSlice.reducer;

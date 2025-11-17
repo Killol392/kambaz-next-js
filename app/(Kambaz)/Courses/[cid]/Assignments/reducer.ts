@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { assignments } from "../../../Database";
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const initialState: { assignments: any[] } = {
-  assignments: assignments,
+  assignments: [],
 };
 const assignmentsSlice = createSlice({
   name: "assignments",
   initialState,
   reducers: {
+    setAssignments(state, action) {
+      state.assignments = action.payload;
+    },
     addAssignment(state, action) {
       state.assignments.push(action.payload);
     },
@@ -27,7 +29,11 @@ const assignmentsSlice = createSlice({
   },
 });
 
-export const { addAssignment, updateAssignment, deleteAssignment } =
-  assignmentsSlice.actions;
+export const {
+  setAssignments,
+  addAssignment,
+  updateAssignment,
+  deleteAssignment,
+} = assignmentsSlice.actions;
 
 export default assignmentsSlice.reducer;
