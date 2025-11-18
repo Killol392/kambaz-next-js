@@ -15,6 +15,10 @@ export default function Labs() {
         <a href="https://github.com/Killol392/kambaz-node-server-app" target="_blank">
           GitHub Repository
         </a>
+        <b> Server (Render):</b>
+        <a href="https://kambaz-node-server-app-xzoq.onrender.com" target="_blank">
+          Root
+        </a>
       </div>
       <h1>Labs</h1>
       <ul>
