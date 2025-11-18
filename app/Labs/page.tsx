@@ -7,8 +7,12 @@ export default function Labs() {
         <b>Course:</b> CS5610 - Web Development <br />
         <b>Semester:</b> Fall 2025 <br />
         <b>Section:</b> 04 <br />
-        <b>Source Code:</b>{" "}
+        <b>Client Code (Next.Js):</b>
         <a href="https://github.com/Killol392/kambaz-next-js" target="_blank">
+          GitHub Repository
+        </a><br />
+        <b>Server Code (Node.js / Express):</b>
+        <a href="https://github.com/Killol392/kambaz-node-server-app" target="_blank">
           GitHub Repository
         </a>
       </div>
