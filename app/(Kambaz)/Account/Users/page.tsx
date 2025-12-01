@@ -10,10 +10,16 @@ import { FormControl } from "react-bootstrap";
 import { FaPlus } from "react-icons/fa6";
 
 export default function Users() {
-  // Admin Access Control
+  // Hooks
   const router = useRouter();
   const { currentUser } = useSelector((state: any) => state.accountReducer);
 
+  const [users, setUsers] = useState<any[]>([]);
+  const { uid } = useParams();
+  const [role, setRole] = useState("");
+  const [name, setName] = useState("");
+
+  // Redirected logic
   useEffect(() => {
     if (!currentUser) {
       router.replace("/Account/Signin");
@@ -22,14 +28,10 @@ export default function Users() {
     }
   }, [currentUser, router]);
 
+  // Code
   if (!currentUser || currentUser.role !== "ADMIN") {
     return null;
   }
-
-  const [users, setUsers] = useState<any[]>([]);
-  const { uid } = useParams();
-  const [role, setRole] = useState("");
-  const [name, setName] = useState("");
 
   const createUser = async () => {
     const user = await client.createUser({
