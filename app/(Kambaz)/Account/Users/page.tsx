@@ -1,0 +1,107 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+import { useState, useEffect } from "react";
+import { useParams, useRouter } from "next/navigation"; 
+import { useSelector } from "react-redux";              
+import PeopleTable from "../../Courses/[cid]/People/Table/page";
+import * as client from "../client";
+import { FormControl } from "react-bootstrap";
+import { FaPlus } from "react-icons/fa6";
+
+export default function Users() {
+  // Admin Access Control
+  const router = useRouter();
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+
+  useEffect(() => {
+    if (!currentUser) {
+      router.replace("/Account/Signin");
+    } else if (currentUser.role !== "ADMIN") {
+      router.replace("/Account/Profile");
+    }
+  }, [currentUser, router]);
+
+  if (!currentUser || currentUser.role !== "ADMIN") {
+    return null;
+  }
+
+  const [users, setUsers] = useState<any[]>([]);
+  const { uid } = useParams();
+  const [role, setRole] = useState("");
+  const [name, setName] = useState("");
+
+  const createUser = async () => {
+    const user = await client.createUser({
+      firstName: "New ",
+      lastName: `User${users.length + 1}`,
+      username: `newuser${Date.now()}`,
+      password: "password123",
+      email: `email${users.length + 1}@neu.edu`,
+      section: "S101",
+      role: "STUDENT",
+    });
+    setUsers([...users, user]);
+  };
+
+  const filterUsersByRole = async (role: string) => {
+    setRole(role);
+    if (role) {
+      const users = await client.findUsersByRole(role);
+      setUsers(users);
+    } else {
+      fetchUsers();
+    }
+  };
+
+  const filterUsersByName = async (name: string) => {
+    setName(name);
+    if (name) {
+      const users = await client.findUsersByPartialName(name);
+      setUsers(users);
+    } else {
+      fetchUsers();
+    }
+  };
+
+  const fetchUsers = async () => {
+    const users = await client.findAllUsers();
+    setUsers(users);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, [uid]);
+
+  return (
+    <div>
+      <button
+        onClick={createUser}
+        className="float-end btn btn-danger wd-add-people"
+      >
+        <FaPlus className="me-2" />
+        Users
+      </button>
+      <h3>Users</h3>
+
+      <FormControl
+        onChange={(e) => filterUsersByName(e.target.value)}
+        placeholder="Search people"
+        className="float-start w-25 me-2 wd-filter-by-name"
+      />
+
+      <select
+        value={role}
+        onChange={(e) => filterUsersByRole(e.target.value)}
+        className="form-select float-start w-25 wd-select-role"
+      >
+        <option value="">All Roles</option>
+        <option value="STUDENT">STUDENT</option>
+        <option value="TA">TA</option>
+        <option value="FACULTY">FACULTY</option>
+        <option value="ADMIN">ADMIN</option>
+      </select>
+
+      <PeopleTable users={users} fetchUsers={fetchUsers} />
+    </div>
+  );
+}
