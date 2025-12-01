@@ -28,7 +28,12 @@ export default function Users() {
     }
   }, [currentUser, router]);
 
-  // Code
+  // Fetch users hook
+  useEffect(() => {
+    fetchUsers();
+  }, [uid]);
+
+  // Early return is now SAFE
   if (!currentUser || currentUser.role !== "ADMIN") {
     return null;
   }
@@ -70,10 +75,6 @@ export default function Users() {
     const users = await client.findAllUsers();
     setUsers(users);
   };
-
-  useEffect(() => {
-    fetchUsers();
-  }, [uid]);
 
   return (
     <div>
